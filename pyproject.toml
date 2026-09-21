@@ -1,0 +1,70 @@
+[project]
+name = "musicbrainz-pydantic"
+version = "0.1.0"
+description = ""
+authors = [
+    { name = "Robert Huselius", email = "robert@huseli.us" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "klaatu-python>=2.4.0",
+    "platformdirs>=4.11.11",
+    "pydantic>=2.13.5",
+    "requests>=2.34.2",
+]
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
+
+[build-system]
+requires = ["uv_build>=0.11.24,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipdb>=0.13.13",
+    "ipython>=9.17.1",
+    "isort>=9.0.1",
+    "ruff>=0.16.8",
+]
+
+[tool.isort]
+combine_as_imports = true
+default_section = "THIRDPARTY"
+include_trailing_comma = true
+line_length = 79
+lines_after_imports = 2
+multi_line_output = 3
+sections = [
+    "FUTURE",
+    "STDLIB",
+    "THIRDPARTY",
+    "FIRSTPARTY",
+    "LOCALFOLDER",
+]
+skip = [".venv", "node_modules"]
+
+[tool.ruff]
+exclude = [".venv", ".git", ".mypy_cache", "__pycache__", "build", "node_modules"]
+line-length = 120
+show-fixes = true
+target-version = "py311"
+
+[tool.ruff.format]
+docstring-code-line-length = 80
+quote-style = "double"
+
+[tool.ruff.lint]
+ignore = ["E722", "B027", "B009"]
+select = ["E", "F", "W", "B", "I"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+default-section = "third-party"
+lines-after-imports = 2
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
